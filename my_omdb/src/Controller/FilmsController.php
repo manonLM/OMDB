@@ -8,9 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class FilmsController extends AbstractController
 {
     /**
-     * @Route("/query", name="Query")
+     * @Route("/", name="Home")
      */
-    public function query()
+    public function home()
     {
         $apiKey = 'f97e824d';
 
@@ -22,32 +22,48 @@ class FilmsController extends AbstractController
 
         $json = json_decode($resultat_curl);
 
-        return $this->render('films/index.html.twig', 
+        return $this->render('films/index.html.twig',
             array(
                 'movies' =>  $json->Search )
-            );
+        );
     }
 
+
+
     /**
-     * @Route("/films_parametres/{query}",
+     * @Route("/contact", name="Contact")
+     */
+    public function contact()
+    {
+        return $this->render('films/contact.html.twig'        );
+    }
+
+
+
+    /**
+     * @Route("/films/{query}",
      * name="FilmsParametres"
      * )
      */
-    public function affichageFilmsAvecParametres( $query ) 
+    public function affichageFilmsAvecParametres( $query )
     {
         $apiKey = 'f97e824d';
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'http://www.omdbapi.com/?s='. $query .'&apikey=' . $apiKey);
+        curl_setopt($ch, CURLOPT_URL, 'http://www.omdbapi.com/?t='. $query .'&apikey=' . $apiKey);
         curl_setopt($ch,  CURLOPT_RETURNTRANSFER, true);
 
         $resultat_curl = curl_exec($ch);
 
         $json = json_decode($resultat_curl);
 
-        return $this->render('films/index.html.twig', 
+
+
+
+        return $this->render('films/film.html.twig' ,
             array(
-                'movies' =>  $json->Search )
-            );
+               'data' => $json,
+                ));
+
     }
 }

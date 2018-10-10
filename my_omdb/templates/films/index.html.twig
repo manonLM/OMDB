@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
+
 
 <div class="container-fluid">
 
@@ -12,33 +15,28 @@
         <h1 class="display-4">SYMFONY!</h1>
         <p class="lead">Bonjour et bienvenue dans ce merveilleux monde de Symfony.</p>
         <hr class="my-4">
-        <p>Tu vas bien t'amuser!!!!</p>
+        <p>Recherche </p>
     </div>
 
+
+
     <div class="row">
-        <!--<div class="col-md-2">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../public/assets/img/wp1831274.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">BB8</h5>
-                    <p class="card-text">BB8 est trop meugnon.</p>
-                    <a href="#" class="btn btn-primary">B8 forever</a>
-                </div>
-            </div>
-        </div>-->
+
         <div class="col-md-12">
             
                 <p>Affichage des films</p>
                 <ul class="card-columns">
                     {% for item in movies %}
-                    <li class="list-group-item" class="col-md-2">
-                        <div class="card" style="width: 14rem;">
-                            <img src="{{item.Poster}}" title="{{ item.Title|escape( 'html_attr')}}"/>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ item.Title }}</h5>
+                        <a  href="{{ url('FilmsParametres' , {'query': item.Title|url_encode}) }}">
+                        <li class="list-group-item" class="col-md-2">
+                            <div class="card" style="width: 14rem;">
+                                <img src="{{item.Poster}}" title="{{ item.Title|escape( 'html_attr')}}"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ item.Title }}</h5>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                        </a>
                     {% endfor %}
                 </ul>
             
