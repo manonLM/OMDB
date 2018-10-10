@@ -62,37 +62,50 @@ class __TwigTemplate_f495b0beb66c98fc0e7bb18da409b813b6b00ab67eddae86b1a545bf742
         <h1 class=\"display-4\">SYMFONY!</h1>
         <p class=\"lead\">Bonjour et bienvenue dans ce merveilleux monde de Symfony.</p>
         <hr class=\"my-4\">
-        <p>Tu vas bien t'amuser!!!!</p>
+
+
+        <p>Recherche </p>
+
+        <form action=\"";
+        // line 22
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("Recherchedefilm");
+        echo "\" method=\"post\">
+            <input name=\"query\">
+            <input type=\"submit\">
+        </form>
+
+
+
     </div>
 
 
 
-    <div class=\"row\">
+    <div class=\"row align-items-center\">
 
         <div class=\"col-md-12\">
             
                 <p>Affichage des films</p>
                 <ul class=\"card-columns\">
                     ";
-        // line 29
+        // line 39
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["movies"]) || array_key_exists("movies", $context) ? $context["movies"] : (function () { throw new Twig_Error_Runtime('Variable "movies" does not exist.', 29, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["movies"]) || array_key_exists("movies", $context) ? $context["movies"] : (function () { throw new Twig_Error_Runtime('Variable "movies" does not exist.', 39, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
-            // line 30
-            echo "                        <a  href=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("FilmsParametres", array("query" => twig_urlencode_filter(twig_get_attribute($this->env, $this->source, $context["item"], "Title", array())))), "html", null, true);
+            // line 40
+            echo "                        <a  class =\"\" href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getUrl("FilmsParametres", array("query" => twig_get_attribute($this->env, $this->source, $context["item"], "imdbID", array()))), "html", null, true);
             echo "\">
-                        <li class=\"list-group-item\" class=\"col-md-2\">
-                            <div class=\"card\" style=\"width: 14rem;\">
+                        <li class=\"list-group-item card\">
+                            <div >
                                 <img src=\"";
-            // line 33
+            // line 43
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "Poster", array()), "html", null, true);
             echo "\" title=\"";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "Title", array()), "html_attr");
             echo "\"/>
                                 <div class=\"card-body\">
                                     <h5 class=\"card-title\">";
-            // line 35
+            // line 45
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["item"], "Title", array()), "html", null, true);
             echo "</h5>
                                 </div>
@@ -104,7 +117,7 @@ class __TwigTemplate_f495b0beb66c98fc0e7bb18da409b813b6b00ab67eddae86b1a545bf742
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 41
+        // line 51
         echo "                </ul>
             
         </div>  
@@ -132,7 +145,7 @@ class __TwigTemplate_f495b0beb66c98fc0e7bb18da409b813b6b00ab67eddae86b1a545bf742
 
     public function getDebugInfo()
     {
-        return array (  108 => 41,  96 => 35,  89 => 33,  82 => 30,  78 => 29,  53 => 6,  44 => 5,  15 => 1,);
+        return array (  121 => 51,  109 => 45,  102 => 43,  95 => 40,  91 => 39,  71 => 22,  53 => 6,  44 => 5,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -154,21 +167,31 @@ class __TwigTemplate_f495b0beb66c98fc0e7bb18da409b813b6b00ab67eddae86b1a545bf742
         <h1 class=\"display-4\">SYMFONY!</h1>
         <p class=\"lead\">Bonjour et bienvenue dans ce merveilleux monde de Symfony.</p>
         <hr class=\"my-4\">
-        <p>Tu vas bien t'amuser!!!!</p>
+
+
+        <p>Recherche </p>
+
+        <form action=\"{{ url('Recherchedefilm') }}\" method=\"post\">
+            <input name=\"query\">
+            <input type=\"submit\">
+        </form>
+
+
+
     </div>
 
 
 
-    <div class=\"row\">
+    <div class=\"row align-items-center\">
 
         <div class=\"col-md-12\">
             
                 <p>Affichage des films</p>
                 <ul class=\"card-columns\">
                     {% for item in movies %}
-                        <a  href=\"{{ url('FilmsParametres' , {'query': item.Title|url_encode}) }}\">
-                        <li class=\"list-group-item\" class=\"col-md-2\">
-                            <div class=\"card\" style=\"width: 14rem;\">
+                        <a  class =\"\" href=\"{{ url('FilmsParametres' , {'query': item.imdbID}) }}\">
+                        <li class=\"list-group-item card\">
+                            <div >
                                 <img src=\"{{item.Poster}}\" title=\"{{ item.Title|escape( 'html_attr')}}\"/>
                                 <div class=\"card-body\">
                                     <h5 class=\"card-title\">{{ item.Title }}</h5>

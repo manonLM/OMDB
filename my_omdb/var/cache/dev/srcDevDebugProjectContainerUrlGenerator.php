@@ -23,6 +23,7 @@ class srcDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
         'Home' => array(array(), array('_controller' => 'App\\Controller\\FilmsController::home'), array(), array(array('text', '/')), array(), array()),
         'Contact' => array(array(), array('_controller' => 'App\\Controller\\FilmsController::contact'), array(), array(array('text', '/contact')), array(), array()),
         'FilmsParametres' => array(array('query'), array('_controller' => 'App\\Controller\\FilmsController::affichageFilmsAvecParametres'), array(), array(array('variable', '/', '[^/]++', 'query'), array('text', '/films')), array(), array()),
+        'Recherchedefilm' => array(array(), array('_controller' => 'App\\Controller\\FilmsController::recherchedefilm'), array(), array(array('text', '/recherche')), array(), array()),
         '_twig_error_test' => array(array('code', '_format'), array('_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'), array('code' => '\\d+'), array(array('variable', '.', '[^/]++', '_format'), array('variable', '/', '\\d+', 'code'), array('text', '/_error')), array(), array()),
         '_wdt' => array(array('token'), array('_controller' => 'web_profiler.controller.profiler::toolbarAction'), array(), array(array('variable', '/', '[^/]++', 'token'), array('text', '/_wdt')), array(), array()),
         '_profiler_home' => array(array(), array('_controller' => 'web_profiler.controller.profiler::homeAction'), array(), array(array('text', '/_profiler/')), array(), array()),

@@ -15,21 +15,31 @@
         <h1 class="display-4">SYMFONY!</h1>
         <p class="lead">Bonjour et bienvenue dans ce merveilleux monde de Symfony.</p>
         <hr class="my-4">
+
+
         <p>Recherche </p>
+
+        <form action="{{ url('Recherchedefilm') }}" method="post">
+            <input name="query">
+            <input type="submit">
+        </form>
+
+
+
     </div>
 
 
 
-    <div class="row">
+    <div class="row align-items-center">
 
         <div class="col-md-12">
             
                 <p>Affichage des films</p>
                 <ul class="card-columns">
                     {% for item in movies %}
-                        <a  href="{{ url('FilmsParametres' , {'query': item.Title|url_encode}) }}">
-                        <li class="list-group-item" class="col-md-2">
-                            <div class="card" style="width: 14rem;">
+                        <a  class ="" href="{{ url('FilmsParametres' , {'query': item.imdbID}) }}">
+                        <li class="list-group-item card">
+                            <div >
                                 <img src="{{item.Poster}}" title="{{ item.Title|escape( 'html_attr')}}"/>
                                 <div class="card-body">
                                     <h5 class="card-title">{{ item.Title }}</h5>
